@@ -25,6 +25,14 @@ def create_app(config_class=Config):
     with app.app_context():
         # Create database tables
         db.create_all()
+        
+        # Auto-seed admin user for remote deployment
+        from models import User
+        if not User.query.filter_by(username='operator_01').first():
+            hashed_pw = bcrypt.generate_password_hash('AdminPassword123!').decode('utf-8')
+            new_admin = User(username='operator_01', password_hash=hashed_pw, clearance_level=4)
+            db.session.add(new_admin)
+            db.session.commit()
 
     from routes.auth import auth
     from routes.vault import vault
