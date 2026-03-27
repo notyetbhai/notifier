@@ -31,7 +31,7 @@ Want to run the vault on your local machine? Ensure you have Python installed.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/notifier.git
+   git clone https://github.com/notyetbhai/notifier.git
    cd notifier
    ```
 
