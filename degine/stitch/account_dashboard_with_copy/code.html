@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VAULT_SCRIPTORIUM | Account Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#d4cbff",
+              "inverse-primary": "#006976",
+              "surface-container-highest": "#22262f",
+              "outline": "#73757d",
+              "primary-fixed": "#00e3fd",
+              "surface-dim": "#0b0e14",
+              "tertiary": "#ff6e84",
+              "on-background": "#ecedf6",
+              "on-secondary-fixed-variant": "#4f2dd2",
+              "on-secondary-container": "#d3caff",
+              "on-surface": "#ecedf6",
+              "on-primary-container": "#004d57",
+              "surface-container": "#161a21",
+              "on-primary": "#005762",
+              "inverse-surface": "#f9f9ff",
+              "secondary-container": "#441cc8",
+              "tertiary-dim": "#e51152",
+              "primary": "#81ecff",
+              "surface-container-low": "#10131a",
+              "error-dim": "#d7383b",
+              "on-primary-fixed-variant": "#005762",
+              "on-secondary-fixed": "#3200a7",
+              "inverse-on-surface": "#52555c",
+              "background": "#0b0e14",
+              "surface-variant": "#22262f",
+              "on-tertiary-fixed-variant": "#780026",
+              "primary-dim": "#00d4ec",
+              "on-tertiary": "#480013",
+              "tertiary-fixed-dim": "#ff788c",
+              "surface-container-lowest": "#000000",
+              "outline-variant": "#45484f",
+              "on-error-container": "#ffa8a3",
+              "on-error": "#490006",
+              "primary-container": "#00e3fd",
+              "on-secondary": "#1e0070",
+              "on-tertiary-fixed": "#39000e",
+              "on-primary-fixed": "#003840",
+              "error-container": "#9f0519",
+              "surface-container-high": "#1c2028",
+              "on-tertiary-container": "#000000",
+              "secondary-fixed-dim": "#c6bbff",
+              "primary-fixed-dim": "#00d4ec",
+              "error": "#ff716c",
+              "secondary": "#9f8eff",
+              "tertiary-container": "#fb2a60",
+              "surface-tint": "#81ecff",
+              "surface-bright": "#282c36",
+              "tertiary-fixed": "#ff909e",
+              "surface": "#0b0e14",
+              "secondary-dim": "#7459f7",
+              "on-surface-variant": "#a9abb3"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-glow-primary {
+            text-shadow: 0 0 10px rgba(129, 236, 255, 0.5), 0 0 20px rgba(129, 236, 255, 0.2);
+        }
+        .neon-glow-secondary {
+            text-shadow: 0 0 10px rgba(159, 142, 255, 0.5), 0 0 20px rgba(159, 142, 255, 0.2);
+        }
+        .glass-ledger {
+            backdrop-filter: blur(12px);
+            background: linear-gradient(135deg, rgba(28, 32, 40, 0.7) 0%, rgba(16, 19, 26, 0.8) 100%);
+        }
+        body {
+            background-color: #0b0e14;
+            color: #ecedf6;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b0e14]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full shadow-[0_0_15px_rgba(129,236,255,0.1)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#81ecff] font-['Space_Grotesk']">VAULT_SCRIPTORIUM</span>
+<div class="hidden md:flex items-center gap-6 ml-4">
+<a class="text-[#81ecff] font-bold font-['Space_Grotesk'] tracking-tight transition-all duration-300" href="#">DASHBOARD</a>
+<a class="text-[#ecedf6]/60 font-['Space_Grotesk'] tracking-tight hover:text-[#81ecff] transition-all duration-300" href="#">ARCHIVE</a>
+<a class="text-[#ecedf6]/60 font-['Space_Grotesk'] tracking-tight hover:text-[#81ecff] transition-all duration-300" href="#">PROTOCOLS</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative flex items-center bg-surface-container-high px-3 py-1.5 rounded-md border-b-2 border-outline transition-all focus-within:border-primary">
+<span class="material-symbols-outlined text-outline text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-label uppercase tracking-widest text-on-surface w-48 lg:w-64 placeholder:text-outline/50" placeholder="FILTER_RECORDS..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-[#ecedf6]/60 hover:text-[#81ecff] transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</button>
+<button class="p-2 text-[#ecedf6]/60 hover:text-[#81ecff] transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-[#ecedf6]/60 hover:text-[#81ecff] transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-8 rounded-md bg-primary/20 flex items-center justify-center overflow-hidden border border-primary/30">
+<img alt="User Security Profile" class="w-full h-full object-cover" data-alt="Cyberpunk style profile avatar with glowing blue circuitry lines on face and dark technological background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNRuvT_tX5GiUsh8BYMw9ncnYAAucQxD-fz91_NcRNoLw8Cc5cytlcfe1UdYE9KC_y8XXrAykv0GofJyClTL8RBP1KG957hsmj4xdBVaGx4vlizKG3xW-NjBmWv3229H7Oqkdi_uxWETAHlmhTDRnZYXupECwzdzPQnmb-E71inh3MUpver0QPM4flJBjd5n14fwZExEEFgLLxBx-OmLbH3bScKaCP7gRr3NTzkOoY6mr8nxtQ_-skDucNHptTZAvzR1EYnrDYTWI"/>
+</div>
+</div>
+<div class="bg-[#1c2028] h-[1px] w-full absolute bottom-0"></div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#0b0e14] border-r border-[#1c2028] flex flex-col pt-24 pb-8 px-4 h-full z-40 hidden lg:flex">
+<div class="mb-10 px-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(159,142,255,0.8)]"></div>
+<div>
+<div class="text-[#ecedf6] text-xs font-bold tracking-widest uppercase font-['Inter']">OPERATOR_01</div>
+<div class="text-[#ecedf6]/40 text-[10px] uppercase font-['Inter']">Verified Session Lvl 4</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#81ecff] border-r-2 border-[#81ecff] bg-gradient-to-r from-[#81ecff]/10 to-transparent cursor-pointer active:opacity-80 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="grid_view">grid_view</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#ecedf6]/40 hover:bg-[#1c2028] hover:text-[#81ecff] cursor-pointer active:opacity-80 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="key">key</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Credentials</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#ecedf6]/40 hover:bg-[#1c2028] hover:text-[#81ecff] cursor-pointer active:opacity-80 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="security">security</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Security Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#ecedf6]/40 hover:bg-[#1c2028] hover:text-[#81ecff] cursor-pointer active:opacity-80 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Audit Trail</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1">
+<button class="w-full flex items-center justify-center gap-2 bg-gradient-to-br from-primary to-primary-dim text-on-primary py-3 rounded-md font-bold text-xs tracking-tighter mb-6 shadow-[0_0_15px_rgba(129,236,255,0.3)] hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                NEW_ENCRYPTED_ENTRY
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-[#ecedf6]/40 hover:text-[#81ecff] transition-colors uppercase text-[10px] font-bold tracking-widest" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="help_outline">help_outline</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-[#ecedf6]/40 hover:text-[#81ecff] transition-colors uppercase text-[10px] font-bold tracking-widest" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+                Terminal
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 px-8 pb-12 min-h-screen">
+<!-- Hero Header Area -->
+<header class="mb-12 flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="max-w-2xl">
+<h1 class="font-headline text-5xl font-extrabold tracking-tighter text-on-background leading-none mb-2">
+                    ACTIVE_VAULT <span class="text-primary-dim">SESSION</span>
+</h1>
+<p class="font-body text-on-surface-variant max-w-lg leading-relaxed">
+                    Secure management of high-priority operational credentials. All entries are encrypted with AES-256 protocol. 
+                    <span class="text-secondary font-mono text-xs ml-2">TIMESTAMP: 2024.10.24_14:32:01_UTC</span>
+</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-high px-6 py-4 rounded-md border-l-4 border-secondary flex flex-col gap-1">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-outline">Total Records</span>
+<span class="font-headline text-3xl font-bold text-on-background">1,248</span>
+</div>
+<div class="bg-surface-container-high px-6 py-4 rounded-md border-l-4 border-primary flex flex-col gap-1">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-outline">Risk Level</span>
+<span class="font-headline text-3xl font-bold text-primary">OPTIMAL</span>
+</div>
+</div>
+</header>
+<!-- Filters & Actions -->
+<section class="mb-8 flex flex-wrap items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high text-on-surface text-xs font-bold tracking-widest uppercase hover:bg-surface-variant transition-colors rounded-md">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                Filter By System
+            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high text-on-surface text-xs font-bold tracking-widest uppercase hover:bg-surface-variant transition-colors rounded-md">
+<span class="material-symbols-outlined text-sm" data-icon="sort">sort</span>
+                Sort: Expiry
+            </button>
+<div class="h-4 w-[1px] bg-outline-variant mx-2"></div>
+<div class="flex gap-2">
+<span class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase">All_Systems</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant text-[10px] font-bold uppercase hover:border-secondary transition-all cursor-pointer">Mainframe</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant text-[10px] font-bold uppercase hover:border-secondary transition-all cursor-pointer">Shadow_Net</span>
+</div>
+</section>
+<!-- The Glass Ledger (Account Table) -->
+<div class="glass-ledger rounded-xl overflow-hidden border border-outline-variant/15 shadow-2xl">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest/30">
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-outline border-b border-outline-variant/10">Ident_ID</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-outline border-b border-outline-variant/10">Credential_Access</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-outline border-b border-outline-variant/10">Meta_Data</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-outline border-b border-outline-variant/10">Time_Remaining</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-outline border-b border-outline-variant/10 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-6 font-mono text-xs text-secondary/70">#XR-992</td>
+<td class="px-6 py-6">
+<div class="flex flex-col">
+<span class="font-headline font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">admin.root@crypt.net</span>
+<span class="text-[10px] font-mono text-outline-variant mt-1 flex items-center">PWD: •••••••••••••••• <button class="ml-2 text-outline-variant hover:text-primary transition-colors focus:outline-none" title="Copy Password"><span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span></button></span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="cloud">cloud</span>
+<span class="text-xs text-on-surface-variant font-body">Mainframe Node 04</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-outline-variant/20" cx="20" cy="20" fill="none" r="18" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-primary neon-glow-primary" cx="20" cy="20" fill="none" r="18" stroke="currentColor" stroke-dasharray="113" stroke-dashoffset="10" stroke-width="2"></circle>
+</svg>
+<span class="absolute text-[8px] font-bold text-primary">29D</span>
+</div>
+<div class="flex flex-col">
+<span class="text-primary font-headline font-bold text-lg neon-glow-primary tracking-tighter">29d 23h 41m</span>
+<span class="text-[9px] text-outline uppercase font-bold tracking-widest">Stability: 99%</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="bg-surface-container-high p-2 rounded hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="content_copy">content_copy</span>
+</button>
+<button class="bg-surface-container-high p-2 rounded hover:text-tertiary transition-all ml-2">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-6 font-mono text-xs text-secondary/70">#ZL-114</td>
+<td class="px-6 py-6">
+<div class="flex flex-col">
+<span class="font-headline font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">security_ops@sector.io</span>
+<span class="text-[10px] font-mono text-outline-variant mt-1 flex items-center">PWD: •••••••••••••••• <button class="ml-2 text-outline-variant hover:text-primary transition-colors focus:outline-none" title="Copy Password"><span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span></button></span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="dns">dns</span>
+<span class="text-xs text-on-surface-variant font-body">Global Auth Relay</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-outline-variant/20" cx="20" cy="20" fill="none" r="18" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-tertiary shadow-[0_0_10px_rgba(255,110,132,0.5)]" cx="20" cy="20" fill="none" r="18" stroke="currentColor" stroke-dasharray="113" stroke-dashoffset="80" stroke-width="2"></circle>
+</svg>
+<span class="absolute text-[8px] font-bold text-tertiary">02D</span>
+</div>
+<div class="flex flex-col">
+<span class="text-tertiary font-headline font-bold text-lg tracking-tighter">02d 12h 08m</span>
+<span class="text-[9px] text-tertiary/70 uppercase font-bold tracking-widest">Action Required</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="bg-surface-container-high p-2 rounded hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="content_copy">content_copy</span>
+</button>
+<button class="bg-surface-container-high p-2 rounded hover:text-tertiary transition-all ml-2">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-6 font-mono text-xs text-secondary/70">#VK-501</td>
+<td class="px-6 py-6">
+<div class="flex flex-col">
+<span class="font-headline font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">dev.proxy_user@internal.dev</span>
+<span class="text-[10px] font-mono text-outline-variant mt-1 flex items-center">PWD: •••••••••••••••• <button class="ml-2 text-outline-variant hover:text-primary transition-colors focus:outline-none" title="Copy Password"><span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span></button></span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="terminal">terminal</span>
+<span class="text-xs text-on-surface-variant font-body">Dev Cluster B</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-outline-variant/20" cx="20" cy="20" fill="none" r="18" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-secondary neon-glow-secondary" cx="20" cy="20" fill="none" r="18" stroke="currentColor" stroke-dasharray="113" stroke-dashoffset="50" stroke-width="2"></circle>
+</svg>
+<span class="absolute text-[8px] font-bold text-secondary">15D</span>
+</div>
+<div class="flex flex-col">
+<span class="text-secondary font-headline font-bold text-lg neon-glow-secondary tracking-tighter">15d 04h 22m</span>
+<span class="text-[9px] text-outline uppercase font-bold tracking-widest">Stability: 100%</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="bg-surface-container-high p-2 rounded hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="content_copy">content_copy</span>
+</button>
+<button class="bg-surface-container-high p-2 rounded hover:text-tertiary transition-all ml-2">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Table Footer -->
+<div class="bg-surface-container-low px-8 py-4 flex justify-between items-center">
+<span class="text-[10px] font-bold text-outline tracking-widest uppercase">Showing 3 of 1,248 Records</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-md border border-outline-variant/30 text-outline hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-md bg-primary/10 border border-primary text-primary text-[10px] font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-md border border-outline-variant/30 text-outline hover:text-primary transition-all text-[10px] font-bold">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-md border border-outline-variant/30 text-outline hover:text-primary transition-all text-[10px] font-bold">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-md border border-outline-variant/30 text-outline hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Asymmetric Detail Cards -->
+<section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-span-2 bg-surface-container-low rounded-xl p-8 border-l-4 border-primary-dim relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline text-2xl font-bold tracking-tight mb-4">SYSTEM_STATUS_REPORT</h3>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<div class="text-[10px] font-bold text-outline uppercase mb-2 tracking-widest">Uptime Probability</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%] shadow-[0_0_8px_rgba(129,236,255,0.5)]"></div>
+</div>
+<div class="mt-2 text-primary font-mono text-xs">94.82% Nominal</div>
+</div>
+<div>
+<div class="text-[10px] font-bold text-outline uppercase mb-2 tracking-widest">Encryption Load</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[62%] shadow-[0_0_8px_rgba(159,142,255,0.5)]"></div>
+</div>
+<div class="mt-2 text-secondary font-mono text-xs">62% Thread Utilization</div>
+</div>
+</div>
+</div>
+<!-- Abstract Decorative Background -->
+<div class="absolute -right-20 -bottom-20 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[240px]" data-icon="shield">shield</span>
+</div>
+</div>
+<div class="bg-gradient-to-br from-tertiary/10 to-transparent rounded-xl p-8 border border-tertiary/20 flex flex-col justify-between">
+<div>
+<h3 class="font-headline text-xl font-bold tracking-tight text-tertiary mb-2 uppercase">Protocol_Warning</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed font-body">
+                        3 credentials reaching critical expiration state within the next 48 hours. Immediate rotation required to maintain system integrity.
+                    </p>
+</div>
+<button class="mt-6 flex items-center justify-center gap-2 px-4 py-3 bg-tertiary text-on-tertiary font-bold text-xs rounded-md hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="sync">sync</span>
+                    AUTO_ROTATE_EXPIRED
+                </button>
+</div>
+</section>
+</main>
+<!-- Bottom Mobile Nav (Supressed on Web as per hierarchy) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-[#0b0e14]/90 backdrop-blur-xl border-t border-[#1c2028] px-4 py-3 flex justify-around items-center z-50">
+<a class="flex flex-col items-center gap-1 text-[#81ecff]" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-[10px] font-bold uppercase">Main</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#ecedf6]/40" href="#">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+<span class="text-[10px] font-bold uppercase">Vault</span>
+</a>
+<button class="w-12 h-12 -mt-10 bg-primary rounded-full text-on-primary shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<a class="flex flex-col items-center gap-1 text-[#ecedf6]/40" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="text-[10px] font-bold uppercase">Logs</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#ecedf6]/40" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[10px] font-bold uppercase">Data</span>
+</a>
+</div>
+</body></html>

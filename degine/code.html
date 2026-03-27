@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VAULT_SCRIPTORIUM | Secure Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#d4cbff",
+              "inverse-primary": "#006976",
+              "surface-container-highest": "#22262f",
+              "outline": "#73757d",
+              "primary-fixed": "#00e3fd",
+              "surface-dim": "#0b0e14",
+              "tertiary": "#ff6e84",
+              "on-background": "#ecedf6",
+              "on-secondary-fixed-variant": "#4f2dd2",
+              "on-secondary-container": "#d3caff",
+              "on-surface": "#ecedf6",
+              "on-primary-container": "#004d57",
+              "surface-container": "#161a21",
+              "on-primary": "#005762",
+              "inverse-surface": "#f9f9ff",
+              "secondary-container": "#441cc8",
+              "tertiary-dim": "#e51152",
+              "primary": "#81ecff",
+              "surface-container-low": "#10131a",
+              "error-dim": "#d7383b",
+              "on-primary-fixed-variant": "#005762",
+              "on-secondary-fixed": "#3200a7",
+              "inverse-on-surface": "#52555c",
+              "background": "#0b0e14",
+              "surface-variant": "#22262f",
+              "on-tertiary-fixed-variant": "#780026",
+              "primary-dim": "#00d4ec",
+              "on-tertiary": "#480013",
+              "tertiary-fixed-dim": "#ff788c",
+              "surface-container-lowest": "#000000",
+              "outline-variant": "#45484f",
+              "on-error-container": "#ffa8a3",
+              "on-error": "#490006",
+              "primary-container": "#00e3fd",
+              "on-secondary": "#1e0070",
+              "on-tertiary-fixed": "#39000e",
+              "on-primary-fixed": "#003840",
+              "error-container": "#9f0519",
+              "surface-container-high": "#1c2028",
+              "on-tertiary-container": "#000000",
+              "secondary-fixed-dim": "#c6bbff",
+              "primary-fixed-dim": "#00d4ec",
+              "error": "#ff716c",
+              "secondary": "#9f8eff",
+              "tertiary-container": "#fb2a60",
+              "surface-tint": "#81ecff",
+              "surface-bright": "#282c36",
+              "tertiary-fixed": "#ff909e",
+              "surface": "#0b0e14",
+              "secondary-dim": "#7459f7",
+              "on-surface-variant": "#a9abb3"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b0e14;
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(129, 236, 255, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .glass-panel {
+            background: rgba(28, 32, 40, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(129, 236, 255, 0.1);
+        }
+        .cyber-grid {
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface min-h-screen flex items-center justify-center p-6 selection:bg-primary/30">
+<div class="fixed inset-0 pointer-events-none overflow-hidden opacity-20">
+<div class="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/20 blur-[120px] rounded-full"></div>
+<div class="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-secondary/10 blur-[120px] rounded-full"></div>
+</div>
+<main class="relative w-full max-w-[1200px] grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden rounded-xl shadow-2xl bg-surface-container-low border border-outline-variant/10">
+<section class="hidden lg:flex lg:col-span-7 relative flex-col justify-between p-12 overflow-hidden bg-surface">
+<div class="absolute inset-0 cyber-grid opacity-10 bg-[linear-gradient(to_right,#1c2028_1px,transparent_1px),linear-gradient(to_bottom,#1c2028_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-16">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-md rotate-45">
+<span class="material-symbols-outlined text-surface rotate-[-45deg] font-bold" data-icon="lock" data-weight="fill">lock</span>
+</div>
+<span class="font-headline text-2xl font-bold tracking-tighter text-primary">VAULT_SCRIPTORIUM</span>
+</div>
+<h1 class="font-headline text-6xl font-bold tracking-tighter text-on-surface leading-tight max-w-md">
+                    Securing the <span class="text-primary">Digital</span> Nexus.
+                </h1>
+<p class="mt-6 text-on-surface-variant text-lg max-w-sm leading-relaxed">
+                    Advanced cryptographic protocols and neural-link verification for the modern operator. Access your encrypted archives with terminal-grade precision.
+                </p>
+</div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-high/50 border-l-2 border-secondary">
+<span class="material-symbols-outlined text-secondary" data-icon="shield_person">shield_person</span>
+<div>
+<p class="text-xs font-label uppercase tracking-widest text-secondary/70">System Status</p>
+<p class="text-sm font-medium">All security nodes active and verified</p>
+</div>
+</div>
+<div class="flex gap-8 mt-4">
+<div>
+<p class="text-2xl font-headline font-bold text-primary">99.9%</p>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Uptime</p>
+</div>
+<div>
+<p class="text-2xl font-headline font-bold text-primary">256-BIT</p>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Encryption</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] opacity-40 mix-blend-screen pointer-events-none">
+<img alt="abstract technological pattern" class="w-full h-full object-cover rounded-full grayscale" data-alt="Close-up of high-tech circuit board traces with glowing cyan light pulses and deep shadows in a cybernetic aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB1MHjQ8kE-oN_bB4YWgZkb-sT7fN5Fdf4AnMNy6YX68m5RFUOtaXq1eWz2L66pVTsfv2dMZkMPMABhJGToQEF8go2AzlxXnlSZEA0SmqcDpVEZGxiXMHRBjyKqBlc73-ARnEz07fQp2OdQt83ZuGGxyKbNUOIA8IKe1sCOFyugzwWb6TO2BM0ds5l0JWVuKO7Bd86hbT78qmclkH0hEjFpUbe1wFBA2S5JhKDpJSJnnvUmjYXzO9BXTtAzLvu7BLTx58MdaUhcDw"/>
+</div>
+</section>
+<section class="lg:col-span-5 p-8 md:p-16 flex flex-col justify-center bg-surface-container-high relative">
+<div class="lg:hidden flex items-center gap-3 mb-12">
+<span class="font-headline text-xl font-bold tracking-tighter text-primary">VAULT_SCRIPTORIUM</span>
+</div>
+<div class="mb-10">
+<h2 class="font-headline text-3xl font-bold text-on-surface tracking-tight">OPERATOR_LOGIN</h2>
+<p class="text-on-surface-variant mt-2 font-label text-sm uppercase tracking-wider">Authentication required to proceed</p>
+</div>
+<form action="#" class="space-y-8" method="POST">
+<div class="space-y-6">
+<div class="relative group">
+<label class="block text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors" for="identifier">Credential Identifier</label>
+<div class="relative">
+<span class="absolute left-0 bottom-3 material-symbols-outlined text-outline text-lg group-focus-within:text-primary transition-colors" data-icon="alternate_email">alternate_email</span>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-3 pl-8 text-on-surface focus:ring-0 focus:border-primary transition-all placeholder:text-outline/50" id="identifier" name="identifier" placeholder="operator_id or email" required="" type="text"/>
+</div>
+</div>
+<div class="relative group">
+<div class="flex justify-between items-end mb-2">
+<label class="block text-xs font-label uppercase tracking-widest text-on-surface-variant group-focus-within:text-primary transition-colors" for="password">Access Key</label>
+<a class="text-[10px] font-label uppercase tracking-tighter text-outline hover:text-primary transition-colors" href="#">Recover Key?</a>
+</div>
+<div class="relative">
+<span class="absolute left-0 bottom-3 material-symbols-outlined text-outline text-lg group-focus-within:text-primary transition-colors" data-icon="key">key</span>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-3 pl-8 text-on-surface focus:ring-0 focus:border-primary transition-all placeholder:text-outline/50" id="password" name="password" placeholder="••••••••••••" required="" type="password"/>
+<button class="absolute right-0 bottom-3 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 py-2">
+<input class="w-4 h-4 rounded-sm border-outline bg-surface-container text-primary focus:ring-primary focus:ring-offset-surface" id="remember" type="checkbox"/>
+<label class="text-sm text-on-surface-variant select-none" for="remember">Maintain persistent session</label>
+</div>
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary font-headline font-bold text-sm uppercase tracking-[0.2em] rounded-md shadow-[0_0_20px_rgba(129,236,255,0.2)] hover:shadow-[0_0_30px_rgba(129,236,255,0.4)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3" type="submit">
+                    Access Secure Vault
+                    <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<div class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></div>
+<span class="text-[10px] font-label uppercase tracking-[0.15em] text-on-surface-variant">Security Protocol Level 4 Enabled</span>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-md hover:bg-surface-bright transition-colors text-xs font-label border border-outline-variant/10">
+<span class="material-symbols-outlined text-base" data-icon="fingerprint">fingerprint</span>
+                        Biometric
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-md hover:bg-surface-bright transition-colors text-xs font-label border border-outline-variant/10">
+<span class="material-symbols-outlined text-base" data-icon="token">token</span>
+                        Security Token
+                    </button>
+</div>
+</div>
+<footer class="mt-auto pt-8 flex justify-between items-center text-[10px] text-outline/50 font-label uppercase tracking-widest">
+<span>© 2024 SCRIPTORIUM_NETWORK</span>
+<span class="flex items-center gap-2">
+<span class="w-1 h-1 bg-outline/30 rounded-full"></span>
+                    Terminal v4.0.2
+                </span>
+</footer>
+</section>
+</main>
+<div class="fixed bottom-8 left-8 hidden xl:flex flex-col gap-2">
+<div class="w-48 h-1 bg-outline-variant/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3 shadow-[0_0_10px_#81ecff]"></div>
+</div>
+<p class="text-[10px] font-label text-outline uppercase tracking-tighter">System Integrity: Nominal</p>
+</div>
+</body></html>

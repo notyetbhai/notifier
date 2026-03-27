@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}VAULT_SCRIPTORIUM | Operator Login{% endblock %}
+
+{% block content %}
+<div class="fixed inset-0 pointer-events-none overflow-hidden opacity-20">
+    <div class="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/20 blur-[120px] rounded-full"></div>
+    <div class="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-secondary/10 blur-[120px] rounded-full"></div>
+</div>
+
+<main class="relative w-full max-w-[1200px] grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden rounded-xl shadow-2xl bg-surface-container-low border border-outline-variant/10 m-auto mt-24">
+    <!-- Left artistic section -->
+    <section class="hidden lg:flex lg:col-span-7 relative flex-col justify-between p-12 overflow-hidden bg-surface">
+        <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#1c2028_1px,transparent_1px),linear-gradient(to_bottom,#1c2028_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-16">
+                <div class="w-10 h-10 bg-primary flex items-center justify-center rounded-md rotate-45">
+                    <span class="material-symbols-outlined text-surface rotate-[-45deg] font-bold" data-icon="lock" data-weight="fill">lock</span>
+                </div>
+                <span class="font-headline text-2xl font-bold tracking-tighter text-primary">VAULT_SCRIPTORIUM</span>
+            </div>
+            
+            <h1 class="font-headline text-6xl font-bold tracking-tighter text-on-surface leading-tight max-w-md">
+                Securing the <span class="text-primary">Digital</span> Nexus.
+            </h1>
+            <p class="mt-6 text-on-surface-variant text-lg max-w-sm leading-relaxed">
+                Advanced cryptographic protocols and neural-link verification for the modern operator. Access your encrypted archives with terminal-grade precision.
+            </p>
+        </div>
+        
+        <div class="relative z-10 flex flex-col gap-4">
+            <div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-high/50 border-l-2 border-secondary">
+                <span class="material-symbols-outlined text-secondary" data-icon="shield_person">shield_person</span>
+                <div>
+                    <p class="text-xs font-label uppercase tracking-widest text-secondary/70">System Status</p>
+                    <p class="text-sm font-medium">All security nodes active and verified</p>
+                </div>
+            </div>
+            <div class="flex gap-8 mt-4">
+                <div>
+                    <p class="text-2xl font-headline font-bold text-primary">99.9%</p>
+                    <p class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Uptime</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-headline font-bold text-primary">256-BIT</p>
+                    <p class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Encryption</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] opacity-40 mix-blend-screen pointer-events-none">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB1MHjQ8kE-oN_bB4YWgZkb-sT7fN5Fdf4AnMNy6YX68m5RFUOtaXq1eWz2L66pVTsfv2dMZkMPMABhJGToQEF8go2AzlxXnlSZEA0SmqcDpVEZGxiXMHRBjyKqBlc73-ARnEz07fQp2OdQt83ZuGGxyKbNUOIA8IKe1sCOFyugzwWb6TO2BM0ds5l0JWVuKO7Bd86hbT78qmclkH0hEjFpUbe1wFBA2S5JhKDpJSJnnvUmjYXzO9BXTtAzLvu7BLTx58MdaUhcDw" alt="abstract technological pattern" class="w-full h-full object-cover rounded-full grayscale" />
+        </div>
+    </section>
+
+    <!-- Right login section -->
+    <section class="lg:col-span-5 p-8 md:p-16 flex flex-col justify-center bg-surface-container-high relative">
+        <div class="lg:hidden flex items-center gap-3 mb-12">
+            <span class="font-headline text-xl font-bold tracking-tighter text-primary">VAULT_SCRIPTORIUM</span>
+        </div>
+        
+        <div class="mb-10">
+            <h2 class="font-headline text-3xl font-bold text-on-surface tracking-tight">OPERATOR_LOGIN</h2>
+            <p class="text-on-surface-variant mt-2 font-label text-sm uppercase tracking-wider">Authentication required to proceed</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('auth.login') }}" class="space-y-8">
+            <div class="space-y-6">
+                <!-- Identifier Input -->
+                <div class="relative group">
+                    <label for="identifier" class="block text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">Credential Identifier</label>
+                    <div class="relative">
+                        <span class="absolute left-0 bottom-3 material-symbols-outlined text-outline text-lg group-focus-within:text-primary transition-colors">alternate_email</span>
+                        <input type="text" id="identifier" name="identifier" required placeholder="operator_id or email" 
+                               class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-3 pl-8 text-on-surface focus:ring-0 focus:border-primary transition-all placeholder:text-outline/50">
+                    </div>
+                </div>
+
+                <!-- Password Input -->
+                <div class="relative group">
+                    <div class="flex justify-between items-end mb-2">
+                        <label for="password" class="block text-xs font-label uppercase tracking-widest text-on-surface-variant group-focus-within:text-primary transition-colors">Access Key</label>
+                        <a href="#" class="text-[10px] font-label uppercase tracking-tighter text-outline hover:text-primary transition-colors">Recover Key?</a>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-0 bottom-3 material-symbols-outlined text-outline text-lg group-focus-within:text-primary transition-colors">key</span>
+                        <input type="password" id="password" name="password" required placeholder="••••••••••••" 
+                               class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-3 pl-8 text-on-surface focus:ring-0 focus:border-primary transition-all placeholder:text-outline/50">
+                        <button type="button" id="togglePassword" class="absolute right-0 bottom-3 text-outline hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-lg" id="toggleIcon">visibility</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 py-2">
+                <input type="checkbox" id="remember" name="remember" class="w-4 h-4 rounded-sm border-outline bg-surface-container text-primary focus:ring-primary focus:ring-offset-surface">
+                <label for="remember" class="text-sm text-on-surface-variant select-none">Maintain persistent session</label>
+            </div>
+
+            <button type="submit" class="w-full py-4 bg-gradient-to-r from-primary to-primary-dim text-[#005762] font-headline font-bold text-sm uppercase tracking-[0.2em] rounded-md shadow-[0_0_20px_rgba(129,236,255,0.2)] hover:shadow-[0_0_30px_rgba(129,236,255,0.4)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3">
+                Access Secure Vault
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            </button>
+        </form>
+
+        <div class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-col gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></div>
+                <span class="text-[10px] font-label uppercase tracking-[0.15em] text-on-surface-variant">Security Protocol Level 4 Enabled</span>
+            </div>
+            <div class="flex flex-wrap gap-4">
+                <button class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-md hover:bg-surface-bright transition-colors text-xs font-label border border-outline-variant/10">
+                    <span class="material-symbols-outlined text-base">fingerprint</span>
+                    Biometric
+                </button>
+                <button class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-md hover:bg-surface-bright transition-colors text-xs font-label border border-outline-variant/10">
+                    <span class="material-symbols-outlined text-base">token</span>
+                    Security Token
+                </button>
+            </div>
+        </div>
+
+        <footer class="mt-auto pt-8 flex justify-between items-center text-[10px] text-outline/50 font-label uppercase tracking-widest">
+            <span>© 2024 SCRIPTORIUM_NETWORK</span>
+            <span class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-outline/30 rounded-full"></span>
+                Terminal v4.0.2
+            </span>
+        </footer>
+    </section>
+</main>
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function (e) {
+        const passwordInput = document.getElementById('password');
+        const icon = document.getElementById('toggleIcon');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        icon.textContent = type === 'password' ? 'visibility' : 'visibility_off';
+    });
+</script>
+{% endblock %}
